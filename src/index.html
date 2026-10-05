@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>College Application Tracker</title>
+    <meta property="og:title" content="College Application Tracker" />
+    <meta
+      property="og:description"
+      content="Track applications, deadlines, essays, and school-specific admissions stats — with Overgrad cohort data."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://college.kevinzheng.fyi" />
+    <meta
+      property="og:image"
+      content="https://college.kevinzheng.fyi/icon.png"
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="College Application Tracker" />
+    <meta
+      name="twitter:description"
+      content="Track applications, deadlines, essays, and school-specific admissions stats."
+    />
+    <meta
+      name="twitter:image"
+      content="https://college.kevinzheng.fyi/icon.png"
+    />
+    <meta name="theme-color" content="#f5f4ef" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./icon.png" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="w">
+      <div class="top">
+        <h1><img src="./icon.svg" alt="" class="logo" /> My College Tracker</h1>
+        <div class="prof">
+          My SAT <input id="psat" type="number" placeholder="1450" /> GPA
+          <input id="pgpa" type="number" step=".01" placeholder="3.9" />
+          <button onclick="exp()">Backup</button
+          ><button onclick="document.getElementById('imp').click()">
+            Restore</button
+          ><button onclick="share()">Share</button
+          ><button
+            onclick="clearAll()"
+            style="color: #b3261e; border-color: #b3261e"
+          >
+            Clear</button
+          ><button id="th" onclick="toggleTheme()">🌙 Theme</button
+          ><input id="imp" type="file" accept=".json" hidden />
+        </div>
+      </div>
+      <div class="stats" id="stats"></div>
+      <div id="dl"></div>
+      <div class="bar">
+        <input
+          id="nm"
+          placeholder="Add a college (type its name)"
+          onkeydown="if (event.key === 'Enter') add();"
+        />
+        <button class="p" onclick="add()">+ Add</button>
+        <button onclick="openBulk()">Bulk import</button>
+        <button onclick="refreshAll()">Refresh all</button>
+        <button onclick="$('htmlAll').click()">Upload HTML pages</button>
+        <button
+          onclick="openHtmlHelp()"
+          title="How to download college pages from Overgrad"
+        >
+          ?</button
+        ><input
+          id="htmlAll"
+          type="file"
+          accept=".html,.htm"
+          multiple
+          hidden
+          onchange="
+            htmlFiles([...this.files]);
+            this.value = '';
+          "
+        />
+        <select id="fs" onchange="draw()"></select
+        ><select id="so" onchange="draw()">
+          <option value="n">Sort: Name</option>
+          <option value="d">Sort: Deadline</option>
+          <option value="a">Sort: Admit rate</option>
+          <option value="c">Sort: Cost</option></select
+        ><select id="sd" onchange="draw()">
+          <option value="asc">Asc</option>
+          <option value="desc">Desc</option>
+        </select>
+      </div>
+      <div class="dl" id="msg" style="display: none"></div>
+      <div class="grid" id="grid"></div>
+      <p class="note">
+        Tuition shown is the New York resident rate: in-state for NY public
+        schools, out-of-state for public schools elsewhere. Data comes from
+        College Scorecard, your IPEDS file (if added), and any Overgrad pages
+        you upload. Confirm deadlines on each school's admissions site. Data is
+        saved in this browser only; use Backup to keep a copy.
+      </p>
+    </div>
+    <div class="ov" id="ov" onclick="if (event.target === this) closeM();">
+      <div class="md" id="md"></div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
