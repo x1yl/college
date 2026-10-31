@@ -735,7 +735,7 @@ function draw() {
           t = tier(c);
         return `<div class="c" onclick="openM(${c.id},'Overview')"><div class="row"><h2>${esc(c.name)}</h2>${t ? `<span class="pill ${t}">${t}</span>` : ""}</div>
 <div class="m">${esc(d.loc || "")} ${d.type ? "· " + esc(d.type) : ""} ${d.setting ? "· " + esc(d.setting) : ""}</div>
-<div style="margin:8px 0"><span class="pill s-${c.status.toLowerCase()}">${c.status}</span>${d.plan ? `<span class="pill">${esc(d.plan)}</span>` : ""}</div>
+<div style="margin:8px 0"><span class="pill s-${c.status.trim().toLowerCase().replace(/\s+/g, '-')}">${c.status}</span>${d.plan ? `<span class="pill">${esc(d.plan)}</span>` : ""}</div>
 <div class="kv"><span>${d.cohortAdmit ? "Admit rate \u00b7 your school" : "Admit rate"}</span><b>${d.cohortAdmit || d.admit ? (d.cohortAdmit || d.admit) + "%" : "—"}</b><span>SAT mid-50%${d.cohortSat25 ? " · your school" : ""}</span><b>${d.cohortSat25 ? d.cohortSat25 + "–" + d.cohortSat75 : d.sat25 ? d.sat25 + "–" + d.sat75 : "—"}</b><span>GPA mid-50%${d.cohortGpa25 ? " · your school" : ""}</span><b>${d.cohortGpa25 ? d.cohortGpa25 + "–" + d.cohortGpa75 : d.gpa25 ? d.gpa25 + "–" + d.gpa75 : d.gpa || "—"}</b><span>${d.net ? "Avg net price" : "Cost of attendance"}</span><b>${d.net ? fm(d.net) : fm(d.coa)}</b><span>Next deadline</span><b>${dd(c) || "—"}</b></div>
 <div class="prog"><i style="width:${prog(c)}%"></i></div><div class="m">${prog(c)}% of checklist done</div></div>`;
       })

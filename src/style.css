@@ -1,6 +1,6 @@
 /* ============================================================
-         College Tracker — "Academic Print" design system (from scratch)
-         ============================================================ */
+College Tracker — "Academic Print" design system (from scratch)
+============================================================ */
 :root {
   --paper: #f5f4ef;
   --surface: #ffffff;
@@ -30,17 +30,14 @@
   --brand: #41d39a;
   --brand-tint: #16362b;
 }
-
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
-
 html {
   scroll-padding-top: 96px;
 }
-
 body {
   background-color: var(--paper);
   background-image: radial-gradient(
@@ -64,13 +61,11 @@ body {
   background: var(--brand);
   color: #fff;
 }
-
 .w {
   max-width: 1500px;
   margin: 0 auto;
   padding: 26px 20px 80px;
 }
-
 /* ——— header ——— */
 .top {
   position: sticky;
@@ -111,7 +106,6 @@ h1 .logo {
 .prof input {
   width: 72px;
 }
-
 /* ——— controls ——— */
 input,
 select,
@@ -179,7 +173,6 @@ input::placeholder,
 textarea::placeholder {
   color: color-mix(in srgb, var(--ink-soft) 70%, transparent);
 }
-
 /* ——— stat cards ——— */
 .stats {
   display: grid;
@@ -215,7 +208,6 @@ textarea::placeholder {
   letter-spacing: 0.1em;
   color: var(--ink-soft);
 }
-
 /* ——— toolbar ——— */
 .bar {
   display: flex;
@@ -245,7 +237,6 @@ textarea::placeholder {
   color: var(--brand);
   border-color: transparent;
 }
-
 /* ——— deadline strip ——— */
 .dl {
   background: color-mix(in srgb, #d69e2e 13%, var(--surface));
@@ -267,7 +258,6 @@ textarea::placeholder {
 :root[data-theme="dark"] .dl {
   color: #fcd34d;
 }
-
 /* ——— college cards ——— */
 .grid {
   display: grid;
@@ -303,7 +293,6 @@ textarea::placeholder {
   color: var(--ink-soft);
   font-size: 13px;
 }
-
 .pill {
   display: inline-flex;
   align-items: center;
@@ -339,6 +328,24 @@ textarea::placeholder {
   background: #ddf3e7;
   color: #116b3a;
 }
+
+/* ——— Status Label Colors ——— */
+.s-not-started {
+  background: #f1f5f9;
+  color: #475569;
+}
+.s-started {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+.s-submitted {
+  background: #ede9fe;
+  color: #6d28d9;
+}
+.s-waitlisted {
+  background: #fdf1d7;
+  color: #925e0b;
+}
 .s-accepted,
 .s-admitted {
   background: #ddf3e7;
@@ -347,10 +354,6 @@ textarea::placeholder {
 .s-rejected {
   background: #fbe4e0;
   color: #b3261e;
-}
-.s-waitlisted {
-  background: #fdf1d7;
-  color: #925e0b;
 }
 
 .kv {
@@ -373,7 +376,6 @@ textarea::placeholder {
   border-bottom: 1px dashed var(--line);
   padding-bottom: 4px;
 }
-
 .prog {
   height: 8px;
   background: var(--paper);
@@ -388,7 +390,6 @@ textarea::placeholder {
   background: var(--brand);
   transition: width 0.3s ease;
 }
-
 /* ——— modal ——— */
 .ov {
   position: fixed;
@@ -425,7 +426,6 @@ textarea::placeholder {
     transform: none;
   }
 }
-
 .tabs {
   display: flex;
   gap: 6px;
@@ -455,7 +455,6 @@ textarea::placeholder {
   background: var(--ink);
   border-bottom-color: var(--brand);
 }
-
 .f {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -474,7 +473,6 @@ textarea::placeholder {
 .f select {
   width: 100%;
 }
-
 .ck {
   display: flex;
   gap: 10px;
@@ -491,7 +489,6 @@ textarea::placeholder {
   width: 15px;
   height: 15px;
 }
-
 .es {
   background: var(--surface);
   border: 1.5px solid var(--line);
@@ -532,7 +529,6 @@ a {
   color: var(--brand);
   font-weight: 600;
 }
-
 /* collapsible Data sections */
 details.grp {
   background: var(--surface);
@@ -575,9 +571,10 @@ details.grp .f,
 details.grp .kv {
   padding: 2px 14px 14px;
 }
-
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *,
+  *::before,
+  *::after {
     transition: none !important;
     animation: none !important;
   }
