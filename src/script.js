@@ -673,8 +673,9 @@ const prog = (c) =>
   Math.round((CK.filter((k) => c.ck[k]).length / CK.length) * 100);
 const dFor = (c) => {
   const p = (c.d.plan || "").toUpperCase();
-  if (/E[DA]/.test(p)) return c.d.dEA;
-  if (p.includes("RD")) return c.d.dRD;
+  if (/\b(EA|ED)\b|EARLY ACTION|EARLY DECISION/.test(p))
+    return c.d.dEA;
+  if (/\bRD\b|REGULAR/.test(p)) return c.d.dRD;
   return [c.d.dEA, c.d.dRD].filter(Boolean).sort()[0];
 };
 const dd = (c) => {
@@ -717,8 +718,8 @@ function draw() {
   l.sort((a, b) => {
     let r = 0;
     if (so === "d") {
-      const xa = dd(a),
-        xb = dd(b);
+      const xa = dFor(a),
+        xb = dFor(b);
       if (!xa && !xb) r = 0;
       else if (!xa) return 1;
       else if (!xb) return -1;
